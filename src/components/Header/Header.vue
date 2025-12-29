@@ -1,26 +1,63 @@
 <script setup>
-    import { ref } from 'vue'
+    import { ref, onMounted, onUnmounted } from 'vue'
     import './header.css';
     import Logo from '../../assets/img/logo.png';
-    import { useScrollSpy } from '@/composables/useScrollSpy';
+    import { gsap } from 'gsap';
 
-    // State for mobile menu
-    const isOpen = ref(false);
+    // Waypoint navigation with ScrollTrigger
+    const triggers = [];
 
-    // Toggle mobile offcanvas
-    const toggleMenu = () => {
-        isOpen.value = !isOpen.value;
-    }
+    onMounted(async () => {
+        const { ScrollTrigger } = await import('gsap/ScrollTrigger.js');
+        const { ScrollToPlugin } = await import('gsap/ScrollToPlugin.js');
 
-    // GSAP scroll spy
-    useScrollSpy(
-        'section', // Target all sections
-        'nav.desktop a',   // Target navigation links
-        {
-            start: 'top center',
-            end: 'bottom center'
-        }
-    );
+        gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
+        // Slight delay to ensure DOM is ready
+        setTimeout(() => {
+            const sections = gsap.utils.toArray('section');
+            const waypoints = gsap.utils.toArray('.waypoint');
+            const progressBar = document.querySelector('.progress-bar');
+
+            if (sections.length === 0 || waypoints.length === 0) return;
+
+            // Create ScrollTrigger for each section
+            sections.forEach((section, index) => {
+                const trigger = ScrollTrigger.create({
+                    trigger: section,
+                    start: 'top center',
+                    end: 'bottom center',
+                    markers: false,
+                    onToggle: self => {
+                        if (self.isActive && waypoints[index]) {
+                            // Remove active class from all waypoints
+                            waypoints.forEach(wp => wp.classList.remove('active'));
+
+                            // Add active class to current waypoint by index
+                            waypoints[index].classList.add('active');
+
+                            // Animate progress bar to current waypoint
+                            if (progressBar && waypoints.length > 1) {
+                                const fillPercentage = (index / (waypoints.length - 1)) * 100;
+
+                                gsap.to(progressBar, {
+                                    height: `${fillPercentage}%`,
+                                    duration: 0.6,
+                                    ease: 'power2.out'
+                                });
+                            }
+                        }
+                    }
+                });
+
+                triggers.push(trigger);
+            });
+        }, 100);
+    });
+
+    onUnmounted(() => {
+        triggers.forEach(trigger => trigger.kill());
+    });
 </script>
 
 <template>
@@ -109,12 +146,16 @@
 
         <!-- Waypoint navigation -->
         <nav class="waypoint-nav">
-            <div class="waypoint" data-section="0">
+            <div class="waypoint active">
                 <span class="waypoint-tooltip">Úvod</span>
             </div>
-            <div class="waypoint" data-section="1">
+            <div class="waypoint">
                 <span class="waypoint-tooltip">Mince</span>
             </div>
+            <div class="waypoint">
+                <span class="waypoint-tooltip">O nás</span>
+            </div>
+            <div class="progress-bar"></div>
         </nav>
     </header>
 </template>

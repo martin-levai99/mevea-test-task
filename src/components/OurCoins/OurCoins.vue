@@ -1,5 +1,5 @@
 <script setup>
-    import './about.css';
+    import './our-coins.css';
 
     // Import images using Vite's dynamic import
     import coinHillWebp from '@/assets/img/coin-hill.webp';
@@ -36,7 +36,7 @@
 
 
 <template>
-    <section id="about" class="about" data-section="1">
+    <section id="our-coins" class="our-coins">
 
         <!-- Floating formula 1 -->
         <picture>

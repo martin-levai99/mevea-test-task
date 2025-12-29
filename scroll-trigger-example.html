@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSAP Scroll Waypoints - Motorsport Legends</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Waypoint Navigation */
+        .waypoint-nav {
+            position: fixed;
+            right: 40px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .waypoint {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .waypoint::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #D4AF37;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .waypoint:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: scale(1.2);
+        }
+
+        .waypoint.active {
+            background: rgba(212, 175, 55, 0.3);
+            border-color: #D4AF37;
+            width: 14px;
+            height: 14px;
+        }
+
+        .waypoint.active::before {
+            opacity: 1;
+        }
+
+        /* Tooltip */
+        .waypoint-tooltip {
+            position: absolute;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(20, 20, 20, 0.95);
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 14px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .waypoint:hover .waypoint-tooltip {
+            opacity: 1;
+        }
+
+        /* Sections */
+        .section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 20px;
+            position: relative;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .section-content {
+            max-width: 1200px;
+            width: 100%;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .section h2 {
+            font-size: clamp(2.5rem, 8vw, 6rem);
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+
+        .section p {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 600px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(212, 175, 55, 0.05) 0%, transparent 50%);
+        }
+
+        .hero .section-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .highlight {
+            color: #D4AF37;
+        }
+
+        /* Legend Cards */
+        .legend-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .legend-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .legend-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(212, 175, 55, 0.5);
+            transform: translateY(-5px);
+        }
+
+        .legend-card h3 {
+            color: #D4AF37;
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+
+        /* CTA Button */
+        .cta-button {
+            display: inline-block;
+            padding: 16px 40px;
+            background: #D4AF37;
+            color: #0a0a0a;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            margin-top: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: #f0c746;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, #D4AF37 0%, #f0c746 100%);
+            z-index: 9999;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .waypoint-nav {
+                right: 20px;
+                gap: 15px;
+            }
+
+            .waypoint {
+                width: 10px;
+                height: 10px;
+            }
+
+            .waypoint-tooltip {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar"></div>
+
+    <!-- Waypoint Navigation -->
+    <nav class="waypoint-nav">
+        <div class="waypoint" data-section="0">
+            <div class="waypoint-tooltip">Úvod</div>
+        </div>
+        <div class="waypoint" data-section="1">
+            <div class="waypoint-tooltip">Graham Hill</div>
+        </div>
+        <div class="waypoint" data-section="2">
+            <div class="waypoint-tooltip">Legendy</div>
+        </div>
+        <div class="waypoint" data-section="3">
+            <div class="waypoint-tooltip">Investice</div>
+        </div>
+        <div class="waypoint" data-section="4">
+            <div class="waypoint-tooltip">Kontakt</div>
+        </div>
+    </nav>
+
+    <!-- Sections -->
+    <section class="section hero" data-section="0">
+        <div class="section-content">
+            <h2>Unikátní investiční<br>mince s motivy mistrů<br>světa <span class="highlight">Formule 1.</span></h2>
+            <p>Objevte exkluzivní kolekci investičních mincí věnovaných legendám motorsportu. Každá mince je uměleckým dílem a investiční příležitostí.</p>
+            <a href="#" class="cta-button">Zjistit více</a>
+        </div>
+    </section>
+
+    <section class="section" data-section="1">
+        <div class="section-content">
+            <h2><span class="highlight">Graham Hill</span></h2>
+            <p>Dvojnásobný mistr světa Formule 1 (1962, 1968). První jezdec, který získal Triple Crown motorsportu - vítězství v Monaco GP, 24 hodin Le Mans a Indianapolis 500.</p>
+            <div class="legend-grid">
+                <div class="legend-card">
+                    <h3>1962</h3>
+                    <p>První titul mistra světa s týmem BRM</p>
+                </div>
+                <div class="legend-card">
+                    <h3>1968</h3>
+                    <p>Druhý titul s Lotus</p>
+                </div>
+                <div class="legend-card">
+                    <h3>Triple Crown</h3>
+                    <p>Jedinečný úspěch v motorsportu</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" data-section="2">
+        <div class="section-content">
+            <h2>Legendy <span class="highlight">motorsportu</span></h2>
+            <p>Naše kolekce oslavuje největší jezdce historie Formule 1. Každá mince je vyrobena z nejkvalitnějších materiálů a obsahuje unikátní detail.</p>
+            <div class="legend-grid">
+                <div class="legend-card">
+                    <h3>Zlatá edice</h3>
+                    <p>999.9 Au, limitovaná série</p>
+                </div>
+                <div class="legend-card">
+                    <h3>Stříbrná edice</h3>
+                    <p>999.9 Ag,kolekce pro sběratele</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" data-section="3">
+        <div class="section-content">
+            <h2>Investice do <span class="highlight">historie</span></h2>
+            <p>Investiční mince kombinují historickou hodnotu s investičním potenciálem drahých kovů. Ideální pro sběratele i investory.</p>
+            <a href="#" class="cta-button">Koupit v e-shopu</a>
+        </div>
+    </section>
+
+    <section class="section" data-section="4">
+        <div class="section-content">
+            <h2>Připojte se k <span class="highlight">legendám</span></h2>
+            <p>Staňte se součástí exkluzivní komunity sběratelů a investorů motorsportových mincí.</p>
+            <a href="#" class="cta-button">Kontaktujte nás</a>
+        </div>
+    </section>
+
+    <!-- GSAP Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+
+    <script>
+        // Register GSAP plugins
+        gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
+        // Get all sections and waypoints
+        const sections = gsap.utils.toArray('.section');
+        const waypoints = gsap.utils.toArray('.waypoint');
+        const progressBar = document.querySelector('.progress-bar');
+
+        // Animate section content on scroll
+        sections.forEach((section, i) => {
+            const content = section.querySelector('.section-content');
+            
+            // Fade in animation
+            gsap.to(content, {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: section,
+                    start: "top 70%",
+                    end: "top 30%",
+                    toggleActions: "play none none reverse"
+                }
+            });
+
+            // Create ScrollTrigger for waypoint activation
+            ScrollTrigger.create({
+                trigger: section,
+                start: "top center",
+                end: "bottom center",
+                onToggle: self => {
+                    if (self.isActive) {
+                        // Remove active class from all waypoints
+                        waypoints.forEach(wp => wp.classList.remove('active'));
+                        // Add active class to current waypoint
+                        waypoints[i].classList.add('active');
+                    }
+                }
+            });
+        });
+
+        // Add click handlers to waypoints for smooth scrolling
+        waypoints.forEach((waypoint, i) => {
+            waypoint.addEventListener('click', (e) => {
+                e.preventDefault();
+                gsap.to(window, {
+                    duration: 1.2,
+                    scrollTo: {
+                        y: sections[i],
+                        offsetY: 0
+                    },
+                    ease: "power3.inOut"
+                });
+            });
+        });
+
+        // Progress bar animation
+        gsap.to(progressBar, {
+            width: "100%",
+            ease: "none",
+            scrollTrigger: {
+                trigger: document.body,
+                start: "top top",
+                end: "bottom bottom",
+                scrub: 0.3
+            }
+        });
+
+        // Parallax effect for hero section
+        gsap.to('.hero .section-content', {
+            y: 100,
+            opacity: 0.5,
+            ease: "none",
+            scrollTrigger: {
+                trigger: '.hero',
+                start: "top top",
+                end: "bottom top",
+                scrub: true
+            }
+        });
+
+        // Animate legend cards on scroll
+        gsap.utils.toArray('.legend-card').forEach((card, i) => {
+            gsap.from(card, {
+                opacity: 0,
+                y: 50,
+                duration: 0.8,
+                delay: i * 0.1,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: card,
+                    start: "top 85%",
+                    toggleActions: "play none none reverse"
+                }
+            });
+        });
+
+        // Set first waypoint as active on load
+        waypoints[0].classList.add('active');
+
+        // Optional: Add keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            const activeWaypoint = document.querySelector('.waypoint.active');
+            const activeIndex = waypoints.indexOf(activeWaypoint);
+
+            if (e.key === 'ArrowDown' && activeIndex < waypoints.length - 1) {
+                waypoints[activeIndex + 1].click();
+            } else if (e.key === 'ArrowUp' && activeIndex > 0) {
+                waypoints[activeIndex - 1].click();
+            }
+        });
+
+        // Smooth scroll reveal for CTA buttons
+        gsap.utils.toArray('.cta-button').forEach(button => {
+            gsap.from(button, {
+                opacity: 0,
+                scale: 0.9,
+                duration: 0.6,
+                ease: "back.out(1.7)",
+                scrollTrigger: {
+                    trigger: button,
+                    start: "top 90%",
+                    toggleActions: "play none none reverse"
+                }
+            });
+        });
+    </script>
+</body>
+</html>

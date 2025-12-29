@@ -75,7 +75,7 @@ header.main {
 
 
 header.fixed-part {
-    @apply fixed top-0 right-0 w-30 h-[100vh] pt-17 bg-red-200/20 flex flex-col items-center;
+    @apply fixed top-0 right-0 w-30 h-[100vh] z-[100] pt-17 flex flex-col items-center;
 
     /* Collapse */
     button.hamburger {
@@ -105,16 +105,15 @@ header.fixed-part {
 
     /* On scroll waypoint indicator */
     .waypoint-nav {
-        @apply flex flex-col gap-10 mt-30;
+        @apply flex flex-col gap-20 mt-30 relative z-[110] left-3;
 
         .waypoint {
-            @apply w-4 h-4 rounded-full bg-gray/20 border-[1px] border-solid border-white/50;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
+            @apply w-3 h-3 rounded-full bg-dark border-[1px] z-[110] border-solid border-white/50 relative;
+            transition: .3s;
 
             span {
-                @apply absolute opacity-0;
+                @apply absolute -top-[5px] right-8 opacity-0 text-gray text-sm whitespace-nowrap;
+                transition: .3s;
             }
 
             &::before {
@@ -123,19 +122,24 @@ header.fixed-part {
                 transition: all 0.3s ease;
             }
 
-            &:hover {
-                background: rgba(255, 255, 255, 0.4);
-                transform: scale(1.2);
-            }
-
             &.active {
-                background: rgba(212, 175, 55, 0.3);
-                @apply border-secondary w-[14px] h-[14px];
+                @apply bg-secondary ;
 
-                &::before {
-                    opacity: 1;
+                span {
+                    @apply opacity-100;
                 }
             } 
+        }
+
+        .progress-bar {
+            @apply w-[1px] absolute top-0 left-[50%] translate-x-[-50%] z-[105];
+            height: 0%;
+            background: linear-gradient(180deg, #EAC666 0%, #B87C1D 100%);
+
+            &::before {
+                content: "";
+                @apply w-[1px] h-[190px] absolute top-0 left-[50%] translate-x-[-100%] z-[105] bg-white/50;
+            }
         }
     }
 }

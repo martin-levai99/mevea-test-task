@@ -1,7 +1,7 @@
 @reference "../../assets/main.css";
 
-section.about {
-    @apply relative pt-80 overflow-hidden py-70;
+section.our-coins {
+    @apply relative pt-80 pb-40;
 
     /* Floating formula img */
     img.formula {

@@ -3,7 +3,7 @@
 </script>
 
 <template>
-    <section class="introduction" data-section="0">
+    <section class="introduction">
 		<div class="container-custom flex items-end justify-between">
 
             <!-- Floating text in bg -->
@@ -28,7 +28,7 @@
                 <h1>
                     Unikátní investiční <br>
                     mince s motivy mistrů 
-                    světa <span class="text-secondary">Formule 1.</span>
+                    světa <span class="text-secondary whitespace-nowrap">Formule 1.</span>
                 </h1>
 
                 <div class="buttons">

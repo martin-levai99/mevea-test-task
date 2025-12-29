@@ -1,0 +1,16 @@
+@reference "../../assets/main.css";
+
+section.about-us{
+    @apply py-50 ;
+
+    /* Heading */
+    h2 {
+        span.small {
+            @apply text-white text-2xl;
+        }
+    }
+
+    p {
+        @apply max-w-[600px] mx-auto text-center mt-10 opacity-80 leading-[1.6];
+    }
+}
