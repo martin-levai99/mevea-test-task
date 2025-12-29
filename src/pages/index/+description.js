@@ -1,1 +1,1 @@
-export default 'Exkluzivní kolekce investičních mincí věnovaných legendám motorsportu. Graham Hill, Alan Jones, Nigel Mansell a další mistři světa Formule 1. Limitovaná série vyrobená z nejkvalitnějších materiálů.'
+export default 'Exkluzivní kolekce investičních mincí věnovaných legendám motorsportu. Graham Hill, Alan Jones, Nigel Mansell a další mistři světa Formule 1.'

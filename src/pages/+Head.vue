@@ -32,6 +32,9 @@
 
     <!-- Canonical URL -->
     <link rel="canonical" href="https://motorsportlegends.cz/" />
+
+    <!-- Sitemap -->
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
 </template>
 
 <script setup>

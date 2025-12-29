@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+    <!-- Homepage -->
+    <url>
+        <loc>https://mevea-test-task.vercel.app/</loc>
+        <lastmod>2025-12-29</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+        <xhtml:link rel="alternate" hreflang="cs" href="https://mevea-test-task.vercel.app/"/>
+    </url>
+
+    <!-- Our Coins Section -->
+    <url>
+        <loc>https://mevea-test-task.vercel.app/#our-coins</loc>
+        <lastmod>2025-12-29</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="cs" href="https://mevea-test-task.vercel.app/#our-coins"/>
+    </url>
+
+    <!-- Individual Coin Pages -->
+    <url>
+        <loc>https://mevea-test-task.vercel.app/#mince-graham-hill</loc>
+        <lastmod>2025-12-29</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="cs" href="https://mevea-test-task.vercel.app/#mince-graham-hill"/>
+    </url>
+
+    <url>
+        <loc>https://mevea-test-task.vercel.app/#mince-alan-jones</loc>
+        <lastmod>2025-12-29</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="cs" href="https://mevea-test-task.vercel.app/#mince-alan-jones"/>
+    </url>
+
+    <url>
+        <loc>https://mevea-test-task.vercel.app/#mince-nigel-mansell</loc>
+        <lastmod>2025-12-29</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="cs" href="https://mevea-test-task.vercel.app/#mince-nigel-mansell"/>
+    </url>
+
+</urlset>
