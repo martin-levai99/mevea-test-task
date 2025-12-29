@@ -36,7 +36,7 @@
 
 
 <template>
-    <section id="about" class="about">
+    <section id="about" class="about" data-section="1">
 
         <!-- Floating formula 1 -->
         <picture>

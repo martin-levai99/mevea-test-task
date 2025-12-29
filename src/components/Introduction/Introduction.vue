@@ -3,7 +3,7 @@
 </script>
 
 <template>
-    <section class="introduction">
+    <section class="introduction" data-section="0">
 		<div class="container-custom flex items-end justify-between">
 
             <!-- Floating text in bg -->

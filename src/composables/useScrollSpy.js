@@ -8,7 +8,7 @@ export function useScrollSpy(sectionSelector, navLinkSelector, options = {}) {
     start: 'top center',
     end: 'bottom center',
     activeClass: 'active',
-    markers: false,
+    markers: true,
     ...options
   };
 

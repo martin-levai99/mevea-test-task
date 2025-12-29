@@ -1,69 +1,141 @@
 @reference "../../assets/main.css";
 
-header {
-    @apply pt-10 flex justify-between;
+header.main {
+    @apply pt-10;
 
-    /* Left side */
-    .left-side {
-        @apply flex gap-15 items-center;
+    .wrap {
+        @apply max-w-[min(100rem,calc(100vw-160px))] flex justify-between;
 
-        /* Legend select */
-        button.legend-select {
-            @apply min-w-[270px] py-3 px-[22px] flex justify-between items-center;
-            @apply rounded-full border-[1px] border-solid border-gray/30 text-gray/80 text-sm;
+        /* Left side */
+        .left-side {
+            @apply flex gap-15 items-center;
+    
+            /* Legend select */
+            button.legend-select {
+                @apply min-w-[270px] py-3 px-[22px] flex justify-between items-center;
+                @apply rounded-full border-[1px] border-solid border-gray/30 text-gray/80 text-sm;
+            }
+        }
+    
+        /* Right side */
+        .right-side {
+            @apply flex gap-9 items-center justify-end;
+    
+            .currency-course {
+                @apply flex gap-2;
+    
+                svg {
+                    @apply w-4 mt-1;
+                }
+    
+                .texts {
+                    p {
+                        @apply text-xs font-medium text-secondary mb-0 leading-[1];
+                    }
+                    span {
+                        @apply text-sm font-bold;
+                    }
+                }
+    
+                &.negative {
+                    svg {
+                        @apply rotate-180;
+                        path {
+                            @apply fill-gray;
+                        }
+                    }
+    
+                    .texts {
+                        p {
+                            @apply text-gray;
+                        }
+                    }
+                }
+            }
+    
+            .divider {
+                @apply w-[1px] h-8 bg-gray/20; 
+            }
+    
+            .price-graph {
+                @apply underline;
+    
+                a {
+                    @apply gap-4 px-0 text-xs;
+                    
+                    svg {
+                        @apply w-[18px] h-[18px]
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+header.fixed-part {
+    @apply fixed top-0 right-0 w-30 h-[100vh] pt-17 bg-red-200/20 flex flex-col items-center;
+
+    /* Collapse */
+    button.hamburger {
+        @apply flex flex-col items-end gap-2 cursor-pointer;
+
+        .line {
+            @apply bg-white h-[2px] rounded-full;
+            transition: .2s;
+
+            &:nth-of-type(1) {
+                @apply w-9;
+            }
+            &:nth-of-type(2) {
+                @apply w-7;
+            }
+            &:nth-of-type(3) {
+                @apply w-5;
+            }
+        }
+
+        &:hover {
+            .line {
+                @apply w-9 bg-secondary;
+            }
         }
     }
 
-    /* Right side */
-    .right-side {
-        @apply flex gap-9 items-center justify-end;
+    /* On scroll waypoint indicator */
+    .waypoint-nav {
+        @apply flex flex-col gap-10 mt-30;
 
-        .currency-course {
-            @apply flex gap-2;
+        .waypoint {
+            @apply w-4 h-4 rounded-full bg-gray/20 border-[1px] border-solid border-white/50;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
 
-            svg {
-                @apply w-4 mt-1;
+            span {
+                @apply absolute opacity-0;
             }
 
-            .texts {
-                p {
-                    @apply text-xs font-medium text-secondary mb-0 leading-[1];
-                }
-                span {
-                    @apply text-sm font-bold;
-                }
+            &::before {
+                content: '';
+                @apply absolute top-[50%] left-[50%] translate-[-50%] w-[6px] h-[6px] rounded-full bg-secondary opacity-0;
+                transition: all 0.3s ease;
             }
 
-            &.negative {
-                svg {
-                    @apply rotate-180;
-                    path {
-                        @apply fill-gray;
-                    }
-                }
-
-                .texts {
-                    p {
-                        @apply text-gray;
-                    }
-                }
+            &:hover {
+                background: rgba(255, 255, 255, 0.4);
+                transform: scale(1.2);
             }
-        }
 
-        .divider {
-            @apply w-[1px] h-8 bg-gray/20; 
-        }
+            &.active {
+                background: rgba(212, 175, 55, 0.3);
+                @apply border-secondary w-[14px] h-[14px];
 
-        .price-graph {
-            @apply underline;
-
-            a {
-                @apply gap-4 px-0 text-xs;
-                
-                svg {
-                    @apply w-[18px] h-[18px]
+                &::before {
+                    opacity: 1;
                 }
-            }
+            } 
         }
     }
 }
