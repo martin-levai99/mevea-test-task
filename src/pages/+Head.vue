@@ -12,16 +12,16 @@
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://motorsportlegends.cz/" />
-    <meta property="og:image" content="/motorsport-legends-og.jpg" />
+    <meta property="og:url" content="https://mevea-test-task.vercel.app/" />
+    <meta property="og:image" content="/meta-og-image.png" />
     <meta property="og:locale" content="cs_CZ" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="https://motorsportlegends.cz/" />
+    <meta name="twitter:url" content="https://mevea-test-task.vercel.app/" />
     <meta name="twitter:title" :content="props.title || 'Motorsport LEGENDS - Investiční mince mistrů Formule 1'" />
     <meta name="twitter:description" :content="props.description || 'Exkluzivní kolekce investičních mincí věnovaných legendám motorsportu.'" />
-    <meta name="twitter:image" content="/motorsport-legends-og.jpg" />
+    <meta name="twitter:image" content="/meta-og-image.png" />
 
     <!-- Performance: Preconnect to external domains -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -31,10 +31,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet" />
 
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://motorsportlegends.cz/" />
-
-    <!-- Sitemap -->
-    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
+    <link rel="canonical" href="https://mevea-test-task.vercel.app/" />
 </template>
 
 <script setup>
