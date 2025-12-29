@@ -5,11 +5,11 @@ section.introduction {
 
     /* Floating text in bg */
     .floating-text {
-        @apply absolute top-[-138px] -left-[75px] z-[-30] text-[19.7vw] font-bold text-black outline-white whitespace-nowrap;
+        @apply absolute top-[-138px] -left-[75px] z-[-30] text-[19.7vw] font-bold text-black whitespace-nowrap;
         font-family: 'Gilmer';
         word-spacing: 245px;
         
-        text-shadow:
+        /* text-shadow:
             -1px -1px 0 #eac7662c,
             0   -1px 0  #eac76609,
             1px -1px 0  #eac7662c,
@@ -17,7 +17,7 @@ section.introduction {
             1px  1px 0  #EAC66609,
             0    1px 0  #EAC66609,
             -1px  1px 0 #eac76600,
-            -1px  0   0 #EAC66609;
+            -1px  0   0 #EAC66609; */
 
         @media screen and (max-width: 1400px) {
             @apply w-[500px] top-[-70px];
@@ -32,6 +32,33 @@ section.introduction {
         -webkit-mask-size: 100% 100%;
         -webkit-mask-repeat: no-repeat;
         -webkit-mask-position: left top, left bottom; */
+
+        &::after {
+            content: "Grah Hill";
+            font-family: 'Gilmer';
+            word-spacing: 245px;
+            @apply w-full h-full absolute top-0 left-0 z-[25] text-[19.7vw] font-bold  whitespace-nowrap;
+
+            text-shadow:
+                -1px -1px 0 rgba(248, 188, 23, 0.247),
+                0   -1px 0  #eac76609,
+                1px -1px 0  #eac7662c,
+                1px  0   0  #EAC66609,
+                1px  1px 0  #EAC66609,
+                0    1px 0  #eac7662c,
+                -1px  1px 0 #eac76600,
+                -1px  0   0 #EAC66609;
+
+            mask-image: radial-gradient(
+                circle at center,
+                rgba(0, 0, 0, 0) 0%,
+                rgba(0, 0, 0, 1) 90%,
+                rgba(0, 0, 0, 0) 100%
+            );
+            -webkit-mask-size: 100% 100%;
+            -webkit-mask-repeat: no-repeat;
+            -webkit-mask-position: left top, left bottom; 
+        }
     }
 
     /* Head img */
@@ -62,7 +89,7 @@ section.introduction {
         }
 
         .buttons {
-            @apply flex gap-0 mt-25;
+            @apply flex gap-0 mt-24;
         }
     }
 

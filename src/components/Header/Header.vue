@@ -76,10 +76,20 @@
                     markers: false,
                     onToggle: self => {
                         if (self.isActive && waypoints[index]) {
-                            // Remove active class from all waypoints
-                            waypoints.forEach(wp => wp.classList.remove('active'));
+                            // Remove both active classes from all waypoints
+                            waypoints.forEach(wp => {
+                                wp.classList.remove('active');
+                                wp.classList.remove('active-previous');
+                            });
 
-                            // Add active class to current waypoint by index
+                            // Add active-previous class to all previous waypoints
+                            waypoints.forEach((wp, wpIndex) => {
+                                if (wpIndex < index) {
+                                    wp.classList.add('active-previous');
+                                }
+                            });
+
+                            // Add active class to current waypoint only
                             waypoints[index].classList.add('active');
 
                             // Animate progress bar to current waypoint

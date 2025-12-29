@@ -110,14 +110,14 @@ header.fixed-part {
 
     /* On scroll waypoint indicator */
     .waypoint-nav {
-        @apply flex flex-col gap-20 mt-30 relative z-[110] left-3;
+        @apply flex flex-col gap-24 mt-37 relative z-[110] left-3;
 
         .waypoint {
-            @apply w-3 h-3 rounded-full bg-dark border-[1px] z-[110] border-solid border-white/50 relative;
+            @apply w-2 h-2 rounded-full bg-dark border-[1px] z-[110] border-solid border-gray/30 relative;
             transition: background-color .3s;
 
             span {
-                @apply absolute -top-[5px] right-8 opacity-0 text-gray text-sm whitespace-nowrap;
+                @apply absolute -top-[5px] right-5 opacity-0 text-gray/70 text-xs whitespace-nowrap;
                 transition: .3s;
             }
 
@@ -129,10 +129,14 @@ header.fixed-part {
 
             &.active {
                 @apply bg-secondary ;
-
+                
                 span {
                     @apply opacity-100;
                 }
+            } 
+
+            &.active-previous {
+                @apply bg-secondary ;
             } 
         }
 
@@ -143,7 +147,7 @@ header.fixed-part {
 
             &::before {
                 content: "";
-                @apply w-[1px] h-[190px] absolute top-0 left-[50%] translate-x-[-100%] z-[105] bg-white/50;
+                @apply w-[1px] h-[215px] absolute top-0 left-[50%] translate-x-[-100%] z-[105] bg-gray/30;
             }
         }
     }
