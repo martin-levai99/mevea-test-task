@@ -1,11 +1,11 @@
 <script setup>
 	import Introduction from '@/components/Introduction/Introduction.vue';
-	import AboutMe from '@/components/AboutMe/AboutMe.vue';
+	import About from '@/components/About/About.vue';
 </script>
 
 <template>
 	<main>
 		<Introduction />
-		<AboutMe />
+		<About />
 	</main>
 </template>

@@ -1,13 +1,67 @@
 @reference "../../assets/main.css";
 
 section.introduction {
-    @apply pt-56;
+    @apply pt-60 flex;
 
-    /* H1 */
-    h1 {
-        @apply uppercase text-7xl font-bold leading-[1.1];
-        color: transparent;
-        background: linear-gradient(150deg, var(--color-white), var(--color-light-white));
-        background-clip: text;
+    /* Floating text in bg */
+    .floating-text {
+        @apply absolute top-[-18px] -left-[70px] z-[-30] text-[19.7vw] font-bold text-black outline-white whitespace-nowrap;
+        font-family: 'Gilmer';
+        word-spacing: 245px;
+        
+        text-shadow:
+            -1px -1px 0 #eac7662c,
+            0   -1px 0  #eac76609,
+            1px -1px 0  #eac7662c,
+            1px  0   0  #EAC66609,
+            1px  1px 0  #EAC66609,
+            0    1px 0  #EAC66609,
+            -1px  1px 0 #eac76600,
+            -1px  0   0 #EAC66609;
+
+        
+        /* mask-image: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 1) 0%,
+            rgba(0, 0, 0, 0) 80%,
+            rgba(0, 0, 0, 0) 100%
+        );
+        -webkit-mask-size: 100% 100%;
+        -webkit-mask-repeat: no-repeat;
+        -webkit-mask-position: left top, left bottom; */
     }
+
+    /* Head img */
+    img.head {
+        @apply w-[630px] absolute top-[-170px] left-[52.2%] translate-x-[-50%] z-[-20];
+        filter: brightness(0.6)
+    }
+
+    /* Formula img */
+    img.formula {
+        @apply absolute top-[320px] left-[-290px] z-[-10];
+        @apply scale-105;
+    }
+
+    /* Left content */
+    .left-content {
+        @apply max-w-[50%] me-auto; 
+
+        h1 {
+            @apply text-[68px] font-medium leading-[1.2];
+        }
+
+        .buttons {
+            @apply flex gap-5 mt-25;
+        }
+    }
+
+    /* Coins img */
+    img.coins {
+        @apply ms-auto;
+    }
+
+    
+
+    
 }

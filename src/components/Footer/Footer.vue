@@ -5,8 +5,6 @@
 
 <template>
     <footer>
-        <p>
-            © {{ currentYear }} Mevea, all rights reserved.
-        </p>
+        © {{ currentYear }} Mevea, všechna práva vyhrazena.
     </footer>
 </template>

@@ -1,0 +1,5 @@
+@reference "../../assets/main.css";
+
+section.about {
+    @apply relative;
+}

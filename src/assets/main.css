@@ -1,30 +1,47 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary:                  #D69952;
-  --color-secondary:                #DCC043;
-  --color-tertiary:                 #757292;
+  --color-primary:                  #B87C1D;
+  --color-secondary:                #EAC666;
   --color-white:                    #FFFFFF;
-  --color-light-white:              #D9D9D9;
-  --color-light-gray:               #929292;
-  --color-dark-gray:                #1B1B24;
-  --color-black:                    #090A0C;
+  --color-gray:                     #BCBCBC;
+  --color-dark:                     #0A0A0A;
+  --color-black:                    #000000;
   --spacing:                        4px;
   --spacing-0:                      0px;
-  --spacing-container:              56rem;
-  --spacing-container-l:            62.5rem;
+  --spacing-container:              100rem;
+  --spacing-container-l:            100rem;
 }
 
-@custom-variant xs {
-    @media screen and (min-width: 420px ) and (max-width: 640px){
-        @slot;
-    }
+@font-face {
+  font-family: 'Gilmer';
+  src: url('./font/Gilmer-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gilmer';
+  src: url('./font/Gilmer-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gilmer';
+  src: url('./font/Gilmer-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
 }
 
 @layer components {
     html {
-        @apply bg-black text-white overflow-x-clip;
-        font-family: 'Roboto', sans-serif;
+        @apply bg-dark text-white overflow-x-clip;
+        overflow: hidden;
+        font-family: 'Inter', sans-serif;
         scroll-behavior: smooth;
     
         * {
@@ -33,36 +50,54 @@
     
         body {
             @apply p-0 m-0 box-border;
-            font-family: "Roboto", sans-serif;
         }
     }
     
     ::selection {
-        @apply bg-primary/40 text-white;
+        @apply bg-secondary/80 text-white;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Gilmer', sans-serif;
     }
     
     h2 {
-        @apply text-5xl mb-6 font-medium leading-[1.15];
+        @apply text-[56px] mb-4;
+    }
 
-        @media screen and (max-width: 920px) {
-            @apply text-[2.6rem]
-        }
-        @media screen and (max-width: 920px) {
-            @apply text-4xl;
-        }
-    }
-    
     h3 {
-        @apply text-2xl mb-4 font-medium;
+        @apply text-[24px];
     }
-    
-    p {
-        @apply font-light leading-[1.6] opacity-90;
+
+    .container-custom {
+        @apply max-w-container-l mx-auto px-9;
     }
     
     .btn {
-        @apply bg-white/20 rounded-full px-10 py-2 inline-flex items-start justify-start font-medium tracking-[0.5px] ;
-        @apply hover:bg-white hover:text-black;
+        @apply inline-flex items-center justify-center gap-5 px-10 py-3;
+        @apply bg-linear-to-r from-secondary to-primary text-dark rounded-full font-medium;
+        transition: .2s;
+
+
+        &:not(.btn-transparent):hover {
+            @apply shadow-secondary/20 shadow-xl;
+        }
+
+        &.btn-transparent {
+            @apply bg-none text-secondary;
+
+            &:hover {
+                @apply text-white;
+
+                svg, svg * {
+                    @apply !fill-white;
+                }
+            }
+        }
+
+        svg {
+            @apply w-[16px] h-[16px];
+        }
     }
 
     a, svg, svg * {

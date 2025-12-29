@@ -1,20 +1,5 @@
 @reference "../../assets/main.css";
 
 footer {
-    @apply max-w-container-l mx-auto flex flex-col justify-center md:justify-between py-10 mt-4 mb-0 text-sm;
-    @apply lg:px-0 md:flex-row md:mb-10;
-
-    p {
-        @apply text-white/80 text-center;
-        @apply lg:text-left;
-
-        @media screen and (max-width: 420px) {
-            @apply mb-0;
-        }
-
-        a {
-            @apply underline;
-            @apply hover:text-white;
-        }
-    }
+    @apply text-center mt-60 py-10;
 }
