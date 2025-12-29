@@ -40,7 +40,6 @@
 @layer components {
     html {
         @apply bg-dark text-white overflow-x-clip;
-        overflow: hidden;
         font-family: 'Inter', sans-serif;
         scroll-behavior: smooth;
     
@@ -62,11 +61,11 @@
     }
     
     h2 {
-        @apply text-[56px] mb-4;
+        @apply text-[56px] text-secondary mb-4;
     }
 
     h3 {
-        @apply text-[24px];
+        @apply text-[24px] text-secondary;
     }
 
     .container-custom {
@@ -74,8 +73,8 @@
     }
     
     .btn {
-        @apply inline-flex items-center justify-center gap-5 px-10 py-3;
-        @apply bg-linear-to-r from-secondary to-primary text-dark rounded-full font-medium;
+        @apply inline-flex items-center justify-center gap-5 px-11 py-3;
+        @apply bg-linear-40 from-secondary to-primary text-dark rounded-full font-medium text-[15px];
         transition: .2s;
 
 
@@ -96,7 +95,7 @@
         }
 
         svg {
-            @apply w-[16px] h-[16px];
+            @apply w-[20px] h-[20px];
         }
     }
 

@@ -51,14 +51,14 @@ header {
         }
 
         .divider {
-            @apply w-[1px] h-8 bg-gray/30; 
+            @apply w-[1px] h-8 bg-gray/20; 
         }
 
         .price-graph {
-            @apply underline text-xs;
+            @apply underline;
 
             a {
-                @apply gap-4 px-0;
+                @apply gap-4 px-0 text-xs;
                 
                 svg {
                     @apply w-[18px] h-[18px]

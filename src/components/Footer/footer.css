@@ -1,5 +1,5 @@
 @reference "../../assets/main.css";
 
 footer {
-    @apply text-center mt-60 py-10;
+    @apply bg-black text-center py-8 opacity-70;
 }

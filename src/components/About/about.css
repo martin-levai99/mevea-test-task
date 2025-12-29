@@ -1,5 +1,51 @@
 @reference "../../assets/main.css";
 
 section.about {
-    @apply relative;
+    @apply relative pt-80 overflow-hidden py-70;
+
+    /* Floating formula img */
+    img.formula {
+        @apply absolute bottom-[-20%] right-[-61.5%] scale-[180%] z-[-5];
+    }
+
+    /* Heading */
+    h2 {
+        span.small {
+            @apply text-white text-2xl;
+        }
+    }
+
+    /* Coins list */
+    .coins {
+        @apply grid grid-cols-12 gap-[6px] mt-30;
+
+        .coin {
+            @apply col-span-4 py-14 px-30 text-center flex flex-col items-center ;
+            @apply bg-black/50 rounded-lg border-[1px] border-solid border-gray/20;
+            
+            @media screen and (max-width: 1500px) {
+                @apply px-20;
+            }
+
+            img {
+                @apply w-100 h-auto;
+            }
+
+            h3 {
+                @apply text-white text-[32px] mt-3;
+            }
+
+            p.title {
+                @apply text-secondary mt-1;
+            }
+
+            p.years {
+                @apply mt-3 mb-8;
+            }
+
+            a.btn {
+                @apply w-full mt-auto;
+            }
+        }
+    }
 }

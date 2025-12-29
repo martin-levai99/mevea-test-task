@@ -55,7 +55,7 @@
 
                 <div class="texts">
                     <p>
-                        1 Unce zlato
+                        1 Unce zlato:
                     </p>
                     <span>
                         45 572.75 Kč
@@ -70,7 +70,7 @@
 
                 <div class="texts">
                     <p>
-                        1 Unce stříbro
+                        1 Unce stříbro:
                     </p>
                     <span>
                         517.83 Kč

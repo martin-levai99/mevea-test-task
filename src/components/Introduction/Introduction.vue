@@ -35,7 +35,7 @@
                     <a href="#about" class="btn">
                         Zjistit více
                     </a>
-                    <a href="#about" class="btn btn-transparent">
+                    <a href="#about" class="btn btn-transparent px-9">
                         <svg width="100%" height="100%" viewBox="0 0 84 82" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
                             <g transform="matrix(1,0,0,1,-1624.995677,-3317.630904)">
                                 <g transform="matrix(4.166667,0,0,4.166667,0,-2975.208333)">
@@ -55,6 +55,13 @@
                 <source srcset="../../assets/img/hero-coins.png" type="image/png">
                 <img class="coins" src="../../assets/img/hero-coins.png" alt="Investiční mince mistrů Formule 1">
             </picture>
+
+            <!-- Scroll down icon -->
+            <svg class="scroll-down" width="17" height="268" viewBox="0 0 17 268" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="8" y="58" width="1" height="210" rx="0.5" fill="#6C6C6C"/>
+                <rect x="1" y="1" width="15" height="27" rx="7.5" stroke="#404040" stroke-width="2"/>
+                <rect x="7" y="8" width="3" height="6" rx="1.5" fill="#404040"/>
+            </svg>
         </div>
 	</section>
 </template>

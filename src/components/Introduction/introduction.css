@@ -1,11 +1,11 @@
 @reference "../../assets/main.css";
 
 section.introduction {
-    @apply pt-60 flex;
+    @apply pt-63 flex relative;
 
     /* Floating text in bg */
     .floating-text {
-        @apply absolute top-[-18px] -left-[70px] z-[-30] text-[19.7vw] font-bold text-black outline-white whitespace-nowrap;
+        @apply absolute top-[-138px] -left-[75px] z-[-30] text-[19.7vw] font-bold text-black outline-white whitespace-nowrap;
         font-family: 'Gilmer';
         word-spacing: 245px;
         
@@ -19,6 +19,9 @@ section.introduction {
             -1px  1px 0 #eac76600,
             -1px  0   0 #EAC66609;
 
+        @media screen and (max-width: 1400px) {
+            @apply w-[500px] top-[-70px];
+        }
         
         /* mask-image: linear-gradient(
             to bottom,
@@ -33,14 +36,21 @@ section.introduction {
 
     /* Head img */
     img.head {
-        @apply w-[630px] absolute top-[-170px] left-[52.2%] translate-x-[-50%] z-[-20];
-        filter: brightness(0.6)
+        @apply w-[630px] absolute top-[-290px] left-[52.2%] translate-x-[-50%] z-[-20];
+        filter: brightness(0.6);
+
+        @media screen and (max-width: 1400px) {
+            @apply w-[500px] top-[-200px];
+        }
+        @media screen and (max-width: 1300px) {
+            @apply w-[430px] top-[-160px];
+        }
     }
 
     /* Formula img */
     img.formula {
-        @apply absolute top-[320px] left-[-290px] z-[-10];
-        @apply scale-105;
+        @apply absolute top-[220px] left-[-280px] z-[-10];
+        @apply scale-110;
     }
 
     /* Left content */
@@ -48,20 +58,21 @@ section.introduction {
         @apply max-w-[50%] me-auto; 
 
         h1 {
-            @apply text-[68px] font-medium leading-[1.2];
+            @apply text-[68px] font-medium leading-[1.22];
         }
 
         .buttons {
-            @apply flex gap-5 mt-25;
+            @apply flex gap-0 mt-25;
         }
     }
 
     /* Coins img */
     img.coins {
-        @apply ms-auto;
+        @apply max-w-full ms-auto translate-x-[5px] translate-y-[5px];
     }
 
-    
-
-    
+    /* Scroll down mouse icon */
+    svg.scroll-down {
+        @apply absolute bottom-[-230px] left-[50%] translate-x-[-50%];
+    }    
 }
