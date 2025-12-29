@@ -71,6 +71,10 @@
     .container-custom {
         @apply max-w-container-l mx-auto px-9;
     }
+
+    section {
+        @apply -scroll-m-60;
+    }
     
     .btn {
         @apply inline-flex items-center justify-center gap-5 px-11 py-3;

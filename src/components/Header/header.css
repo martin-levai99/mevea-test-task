@@ -13,7 +13,12 @@ header.main {
             /* Legend select */
             button.legend-select {
                 @apply min-w-[270px] py-3 px-[22px] flex justify-between items-center;
-                @apply rounded-full border-[1px] border-solid border-gray/30 text-gray/80 text-sm;
+                @apply rounded-full border-[1px] border-solid border-gray/30 text-gray/80 text-sm cursor-pointer;
+                transition: .3s;
+
+                &:hover {
+                    @apply border-gray text-gray;
+                }
             }
         }
     
