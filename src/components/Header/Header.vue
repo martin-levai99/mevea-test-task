@@ -141,7 +141,7 @@
     
             <!-- Right side -->
             <div class="right-side">
-                <div class="currency-course positive" aria-label="Aktuální cena zlata: 45 572,75 Kč za unci, trend rostoucí">
+                <div class="currency-course positive">
                     <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                         <path d="M4.76318 0L9.52632 6H4.3869e-05L4.76318 0Z" fill="#EAC666"/>
                     </svg>
@@ -156,7 +156,7 @@
                     </div>
                 </div>
 
-                <div class="currency-course negative" aria-label="Aktuální cena stříbra: 517,83 Kč za unci, trend klesající">
+                <div class="currency-course negative">
                     <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                         <path d="M4.76318 0L9.52632 6H4.3869e-05L4.76318 0Z" fill="#EAC666"/>
                     </svg>
@@ -175,7 +175,7 @@
 
                 <div class="price-graph">
                     <a href="#about" class="btn btn-transparent" aria-label="Zobrazit vývoj cen drahých kovů">
-                        <svg width="100%" height="100%" viewBox="0 0 75 75" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;" aria-hidden="true">
+                        <svg width="100%" height="100%" viewBox="0 0 75 75" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;" aria-hidden="true">
                             <g transform="matrix(1,0,0,1,-6814.583333,-280.416667)">
                                 <g transform="matrix(4.166667,0,0,4.166667,0,-9055.833333)">
                                     <path d="M1646.71,2241.43C1647.07,2241.43 1647.37,2241.72 1647.37,2242.08C1647.37,2242.44 1647.07,2242.73 1646.71,2242.73L1640.39,2242.73C1638.21,2242.73 1636.8,2244.23 1636.8,2246.55L1636.8,2253.58C1636.8,2255.93 1638.18,2257.39 1640.39,2257.39L1647.87,2257.39C1650.06,2257.39 1651.46,2255.9 1651.46,2253.58L1651.46,2247.46C1651.46,2247.1 1651.76,2246.81 1652.12,2246.81C1652.48,2246.81 1652.77,2247.1 1652.77,2247.46L1652.77,2253.58C1652.77,2256.64 1650.8,2258.7 1647.87,2258.7L1640.39,2258.7C1637.47,2258.7 1635.5,2256.64 1635.5,2253.58L1635.5,2246.55C1635.5,2243.49 1637.47,2241.43 1640.39,2241.43L1646.71,2241.43ZM1648.55,2247.37C1648.84,2247.59 1648.89,2248 1648.67,2248.28L1646.12,2251.57C1646.01,2251.71 1645.86,2251.79 1645.69,2251.82C1645.51,2251.84 1645.35,2251.79 1645.2,2251.68L1642.75,2249.76L1640.55,2252.62C1640.41,2252.79 1640.24,2252.87 1640.04,2252.87C1639.89,2252.87 1639.76,2252.83 1639.64,2252.74C1639.35,2252.52 1639.3,2252.11 1639.52,2251.82L1642.12,2248.44C1642.23,2248.3 1642.38,2248.22 1642.56,2248.19C1642.74,2248.17 1642.9,2248.21 1643.04,2248.33L1645.49,2250.25L1647.64,2247.48C1647.86,2247.2 1648.27,2247.14 1648.55,2247.37ZM1651.12,2240.7C1652.4,2240.7 1653.44,2241.74 1653.44,2243.02C1653.44,2244.3 1652.4,2245.34 1651.12,2245.34C1649.84,2245.34 1648.8,2244.3 1648.8,2243.02C1648.8,2241.74 1649.84,2240.7 1651.12,2240.7ZM1651.12,2242C1650.56,2242 1650.1,2242.46 1650.1,2243.02C1650.1,2243.58 1650.56,2244.04 1651.12,2244.04C1651.68,2244.04 1652.14,2243.58 1652.14,2243.02C1652.14,2242.46 1651.68,2242 1651.12,2242Z" style="fill:rgb(234,198,102);"/>

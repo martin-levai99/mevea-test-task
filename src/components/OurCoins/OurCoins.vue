@@ -122,7 +122,7 @@
 
             <!-- Coins list -->
             <div class="coins" role="list">
-                <article v-for="coin in coins" :key="coin.title" :id="'mince-' + coin.name.toLowerCase().replace(' ', '-')" class="coin" role="listitem">
+                <div v-for="coin in coins" :key="coin.title" :id="'mince-' + coin.name.toLowerCase().replace(' ', '-')" class="coin" role="listitem">
 
                     <picture>
                         <source :srcset="coin.img_url_webp" type="image/webp">
@@ -139,13 +139,13 @@
                     </p>
 
                     <p class="years">
-                        <time>{{ coin.years }}</time>
+                        <span>{{ coin.years }}</span>
                     </p>
 
                     <a :href="`#our-coins/${coin.name.toLowerCase().replace(' ', '-')}`" class="btn" :aria-label="`Koupit investiční minci ${coin.name}`">
                         Investiční mince
                     </a>
-                </article>
+                </div>
             </div>
         </div>
     </section>
