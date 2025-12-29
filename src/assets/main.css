@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary:                  #D69952;
+  --color-secondary:                #DCC043;
+  --color-tertiary:                 #757292;
+  --color-white:                    #FFFFFF;
+  --color-light-white:              #D9D9D9;
+  --color-light-gray:               #929292;
+  --color-dark-gray:                #1B1B24;
+  --color-black:                    #090A0C;
+  --spacing:                        4px;
+  --spacing-0:                      0px;
+  --spacing-container:              56rem;
+  --spacing-container-l:            62.5rem;
+}
+
+@custom-variant xs {
+    @media screen and (min-width: 420px ) and (max-width: 640px){
+        @slot;
+    }
+}
+
+@layer components {
+    html {
+        @apply bg-black text-white overflow-x-clip;
+        font-family: 'Roboto', sans-serif;
+        scroll-behavior: smooth;
+    
+        * {
+          @apply box-border;
+        }
+    
+        body {
+            @apply p-0 m-0 box-border;
+            font-family: "Roboto", sans-serif;
+        }
+    }
+    
+    ::selection {
+        @apply bg-primary/40 text-white;
+    }
+    
+    h2 {
+        @apply text-5xl mb-6 font-medium leading-[1.15];
+
+        @media screen and (max-width: 920px) {
+            @apply text-[2.6rem]
+        }
+        @media screen and (max-width: 920px) {
+            @apply text-4xl;
+        }
+    }
+    
+    h3 {
+        @apply text-2xl mb-4 font-medium;
+    }
+    
+    p {
+        @apply font-light leading-[1.6] opacity-90;
+    }
+    
+    .btn {
+        @apply bg-white/20 rounded-full px-10 py-2 inline-flex items-start justify-start font-medium tracking-[0.5px] ;
+        @apply hover:bg-white hover:text-black;
+    }
+
+    a, svg, svg * {
+        transition: .3s;
+    }
+}

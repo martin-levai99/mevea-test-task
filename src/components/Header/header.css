@@ -1,0 +1,150 @@
+@reference "../../assets/main.css";
+
+.main-header {
+    @apply max-w-[100vw] px-[10%] pt-2 pb-8 w-full grid grid-cols-12 items-center fixed top-[20px] z-50 left-[50%] translate-x-[-50%];
+    @apply md:pt-8;
+
+    @media screen and (max-width: 1023px) {
+        @apply max-w-container px-8 mx-auto;
+    }
+
+    /* Logo wrap */
+    .logo-wrap {
+        @apply flex justify-start items-center relative z-[100];
+    }
+    
+
+    /* Nav items - desktop */
+    nav.desktop {
+        @apply w-fit mx-auto rounded-full bg-light-white/10 px-2 py-2 justify-center gap-8 relative backdrop-blur-xl;
+        @apply hidden lg:flex;
+        box-shadow: 0 0 15px 0px var(--color-light-black);
+    
+        /* The border */
+        &::after {
+            content: '';
+            @apply absolute inset-0 z-[-1];
+            @apply border-[1px] border-transparent rounded-full;
+
+            background: 
+                linear-gradient(130deg, #FFFFFF33, #99999933) 
+                border-box;
+            --layer: conic-gradient(red 0 0); 
+            mask: var(--layer) padding-box exclude, var(--layer);
+        }
+
+        a {
+            @apply text-white no-underline rounded-full px-8 py-2 whitespace-nowrap relative;
+            transition: 0.3s all 1s;
+
+            /* Gradient background */
+            &::before {
+                content: '';
+                @apply absolute inset-0 rounded-full z-[-1] bg-linear-to-b from-light-white/15 to-light-white/5 opacity-0;
+                transition: 0.1s all;
+            }
+
+            /* Light at the top */
+            &::after {
+                content: '';
+                @apply absolute w-16 h-[2px] bg-light-white rounded-full left-[50%] -top-[10px] translate-x-[-50%] z-[-1] opacity-0;
+                box-shadow: 0 0 15px 0px var(--color-light-white);
+                transition: 0.1s all;
+            }
+
+            &:hover, &.active {
+                &::before, &::after {
+                    @apply opacity-100;
+                    transition: 0.3s;
+                }
+            }
+        }
+    }
+
+
+    /* Get in touch */
+    .get-in-touch-wrap {
+        @apply hidden lg:flex;
+
+        a {
+            @apply text-white no-underline flex py-3 px-6 rounded-full ms-3;
+
+            @media screen and (max-width: 1280px) {
+                @apply py-2 px-4;
+            }
+
+            &:hover {
+                @apply bg-light-white/20;
+            }
+        }
+    }
+
+
+    /* Mobile navbar toggle */
+    .mobile-navbar-toggle {
+        @apply flex justify-end items-center relative z-[100] ;
+        @apply lg:hidden;
+
+        .svg-wrap {
+            @apply p-3 bg-light-white/10 rounded-full backdrop-blur-3xl cursor-pointer;
+            transition: .1s;
+
+            &:hover {
+                @apply bg-light-white/20;
+            }
+
+            svg {
+                @apply w-[25px] h-[25px];
+
+                rect {
+                    @apply origin-center;
+                }
+            }
+
+            &.toggled {
+                svg {
+                    @apply scale-105;
+
+                    rect:nth-of-type(1) {
+                        @apply rotate-45 translate-y-[3.5px] -translate-x-[3.5px];
+                    }
+                    rect:nth-of-type(2) {
+                        @apply -rotate-45;
+                    }
+                    rect:nth-of-type(3) {
+                        @apply opacity-0;
+                    }
+                }
+            }
+        }
+    }
+
+    /* Mobile navbar offcanvas */
+    .navbar-offcanvas {
+        @apply fixed -top-5 left-0 w-full h-[100vh] flex flex-col justify-center items-center bg-dark-gray/85 overflow-y-auto backdrop-blur-xl opacity-0;
+        @apply pointer-events-none -translate-y-full;
+        @apply lg:hidden;
+        transition: 0.5s all, 0.5s opacity 0.5s;
+
+        &.visible {
+            @apply pointer-events-auto translate-y-0 opacity-100;
+            transition: 0.5s all;
+        }
+
+        nav {
+            @apply flex flex-col gap-8 items-center justify-center -translate-y-5;
+
+            a {
+                @apply text-2xl flex py-3 px-6 rounded-full;
+
+                &:hover {
+                    @apply bg-light-white/20;
+                }
+            }
+        }
+
+        .socials {
+            @apply absolute bottom-15 justify-center;
+        }
+    }
+}

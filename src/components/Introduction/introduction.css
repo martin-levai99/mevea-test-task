@@ -1,0 +1,13 @@
+@reference "../../assets/main.css";
+
+section.introduction {
+    @apply pt-56;
+
+    /* H1 */
+    h1 {
+        @apply uppercase text-7xl font-bold leading-[1.1];
+        color: transparent;
+        background: linear-gradient(150deg, var(--color-white), var(--color-light-white));
+        background-clip: text;
+    }
+}

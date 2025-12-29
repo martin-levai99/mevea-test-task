@@ -1,0 +1,1 @@
+export default 'Czech web developer focused on end-to-end web solutions for clients worldwide.'
