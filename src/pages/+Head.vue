@@ -6,8 +6,6 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon-32x32.png" />
 
     <!-- Primary Meta Tags -->
-    <title>{{ props.title || 'Motorsport LEGENDS - Investiční mince mistrů Formule 1' }}</title>
-    <meta name="description" :content="props.description || 'Exkluzivní kolekce investičních mincí věnovaných legendám motorsportu. Graham Hill, Alan Jones, Nigel Mansell a další mistři světa Formule 1. Limitovaná série vyrobená z nejkvalitnějších materiálů.'" />
     <meta name="keywords" content="investiční mince, Formule 1, F1, Graham Hill, Alan Jones, Nigel Mansell, sběratelské mince, zlaté mince, stříbrné mince, motorsport, legendy F1, investice do zlata" />
     <meta name="author" content="Mevea s.r.o." />
     <meta name="robots" content="index, follow" />
@@ -15,8 +13,6 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://motorsportlegends.cz/" />
-    <meta property="og:title" :content="props.title || 'Motorsport LEGENDS - Investiční mince mistrů Formule 1'" />
-    <meta property="og:description" :content="props.description || 'Exkluzivní kolekce investičních mincí věnovaných legendám motorsportu. Limitovaná série vyrobená z nejkvalitnějších materiálů.'" />
     <meta property="og:image" content="/motorsport-legends-og.jpg" />
     <meta property="og:locale" content="cs_CZ" />
 
