@@ -1,1 +1,1 @@
-export default 'Martin Lévai - Full-stack Developer'
+export default 'Motorsport LEGENDS - Investiční mince mistrů Formule 1'

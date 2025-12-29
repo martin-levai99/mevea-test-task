@@ -1,1 +1,1 @@
-export default 'Czech web developer focused on end-to-end web solutions for clients worldwide.'
+export default 'Exkluzivní kolekce investičních mincí věnovaných legendám motorsportu. Graham Hill, Alan Jones, Nigel Mansell a další mistři světa Formule 1. Limitovaná série vyrobená z nejkvalitnějších materiálů.'

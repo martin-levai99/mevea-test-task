@@ -101,19 +101,19 @@
 
 
 <template>
-    <section id="our-coins" class="our-coins">
+    <section id="our-coins" class="our-coins" aria-labelledby="coins-heading">
 
         <!-- Floating formula 1 -->
         <picture>
             <source srcset="../../assets/img/formule.webp" type="image/webp">
             <source srcset="../../assets/img/formule.png" type="image/png">
-            <img class="formula" src="../../assets/img/formule.png" alt="Formule">
+            <img class="formula" src="../../assets/img/formule.png" alt="Formule 1 závodní vůz" loading="lazy" aria-hidden="true">
         </picture>
 
         <div class="container-custom">
-            
+
             <!-- Heading -->
-            <h2 class="text-center">
+            <h2 id="coins-heading" class="text-center">
                 <span class="small">
                     V současné době startujeme první etapu,
                 </span> <br>
@@ -121,13 +121,13 @@
             </h2>
 
             <!-- Coins list -->
-            <div class="coins">
-                <div v-for="coin in coins" :key="coin.title" :id="'mince-' + coin.title.toLowerCase().replace(' ', '-')" class="coin">
+            <div class="coins" role="list">
+                <article v-for="coin in coins" :key="coin.title" :id="'mince-' + coin.name.toLowerCase().replace(' ', '-')" class="coin" role="listitem">
 
                     <picture>
                         <source :srcset="coin.img_url_webp" type="image/webp">
                         <source :srcset="coin.img_url_png" type="image/png">
-                        <img class="coin-img" :src="coin.img_url_png" :alt="'Investiční mince - ' + coin.name">
+                        <img class="coin-img" :src="coin.img_url_png" :alt="`Investiční mince ${coin.name} - ${coin.title}, ${coin.years}`" loading="lazy" width="300" height="300">
                     </picture>
 
                     <h3>
@@ -139,13 +139,13 @@
                     </p>
 
                     <p class="years">
-                        {{ coin.years }}
+                        <time>{{ coin.years }}</time>
                     </p>
 
-                    <a href="#our-coins" class="btn">
+                    <a :href="`#our-coins/${coin.name.toLowerCase().replace(' ', '-')}`" class="btn" :aria-label="`Koupit investiční minci ${coin.name}`">
                         Investiční mince
                     </a>
-                </div>
+                </article>
             </div>
         </div>
     </section>
