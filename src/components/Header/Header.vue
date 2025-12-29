@@ -15,6 +15,52 @@
 
         // Slight delay to ensure DOM is ready
         setTimeout(() => {
+            // Animate fixed navigation elements immediately (important for UX)
+            const fixedNavTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+            fixedNavTl.from('header.fixed-part .hamburger', {
+                opacity: 0,
+                scale: 0.8,
+                duration: 0.5
+            })
+            .from('header.fixed-part .waypoint', {
+                opacity: 0,
+                x: 20,
+                stagger: 0.1,
+                duration: 0.6
+            }, '-=0.3');
+
+            // Main header animations (separate timeline)
+            const headerTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+            headerTl.from('header.main .logo', {
+                opacity: 0,
+                y: -20,
+                duration: 0.8
+            })
+            .from('header.main .legend-select', {
+                opacity: 0,
+                y: -20,
+                duration: 0.6
+            }, '-=0.5')
+            .from('header.main .currency-course', {
+                opacity: 0,
+                y: -20,
+                stagger: 0.1,
+                duration: 0.6
+            }, '-=0.4')
+            .from('header.main .divider', {
+                opacity: 0,
+                scaleY: 0,
+                duration: 0.4
+            }, '-=0.3')
+            .from('header.main .price-graph', {
+                opacity: 0,
+                x: 20,
+                duration: 0.6
+            }, '-=0.3');
+
+            // ScrollTrigger setup for waypoints
             const sections = gsap.utils.toArray('section');
             const waypoints = gsap.utils.toArray('.waypoint');
             const progressBar = document.querySelector('.progress-bar');

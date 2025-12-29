@@ -1,4 +1,6 @@
 <script setup>
+    import { onMounted } from 'vue';
+    import { gsap } from 'gsap';
     import './our-coins.css';
 
     // Import images using Vite's dynamic import
@@ -32,6 +34,69 @@
             "years": "1992"
         }
     ];
+
+    onMounted(async () => {
+        const { ScrollTrigger } = await import('gsap/ScrollTrigger.js');
+        gsap.registerPlugin(ScrollTrigger);
+
+        setTimeout(() => {
+            // Animate heading when scrolled into view
+            gsap.from('.our-coins h2', {
+                opacity: 0,
+                y: 50,
+                duration: 1,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: '.our-coins h2',
+                    start: 'top 80%',
+                    toggleActions: 'play none none none'
+                }
+            });
+
+            // Animate formula car
+            gsap.from('.our-coins .formula', {
+                opacity: 0,
+                rotation: -30,
+                scale: 0.8,
+                duration: 1.2,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: '.our-coins',
+                    start: 'top 70%',
+                    toggleActions: 'play none none none'
+                }
+            });
+
+            // Animate each coin card with stagger
+            gsap.from('.our-coins .coin', {
+                opacity: 0,
+                y: 80,
+                scale: 0.9,
+                stagger: 0.2,
+                duration: 1,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: '.our-coins .coins',
+                    start: 'top 75%',
+                    toggleActions: 'play none none none'
+                }
+            });
+
+            // Animate coin images with rotation effect
+            gsap.from('.our-coins .coin-img', {
+                rotation: 180,
+                scale: 0.5,
+                stagger: 0.2,
+                duration: 1.2,
+                ease: 'back.out(1.2)',
+                scrollTrigger: {
+                    trigger: '.our-coins .coins',
+                    start: 'top 70%',
+                    toggleActions: 'play none none none'
+                }
+            });
+        }, 100);
+    });
 </script>
 
 
@@ -77,7 +142,7 @@
                         {{ coin.years }}
                     </p>
 
-                    <a href="#about" class="btn">
+                    <a href="#our-coins" class="btn">
                         Investiční mince
                     </a>
                 </div>

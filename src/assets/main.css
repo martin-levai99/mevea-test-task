@@ -79,7 +79,7 @@
     .btn {
         @apply inline-flex items-center justify-center gap-5 px-11 py-3;
         @apply bg-linear-40 from-secondary to-primary text-dark rounded-full font-medium text-[15px];
-        transition: .2s;
+        transition: box-shadow .2s, background-color .2s, color .2s;
 
 
         &:not(.btn-transparent):hover {
@@ -100,6 +100,7 @@
 
         svg {
             @apply w-[20px] h-[20px];
+            transition: fill .2s;
         }
     }
 

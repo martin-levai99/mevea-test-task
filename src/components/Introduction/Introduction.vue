@@ -1,5 +1,68 @@
 <script setup>
-    import './introduction.css'
+    import { onMounted } from 'vue';
+    import { gsap } from 'gsap';
+    import './introduction.css';
+
+    onMounted(() => {
+        // Small delay to ensure DOM is ready
+        setTimeout(() => {
+            // Create a timeline for sequenced animations
+            const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+            // Animate hero content on page load
+            tl
+            .from('.introduction .formula', {
+                opacity: 0,
+                x: -500,
+                scale: 0.9,
+                duration: 1
+            })
+            .from('.introduction .head', {
+                opacity: 0,
+                scale: 1,
+                x: -100,
+                duration: 1.2
+            }, '-=0.8')
+            .from('.introduction h1', {
+                opacity: 0,
+                y: 60,
+                duration: 1
+            }, '-=0.8')
+            .from('.introduction .floating-text', {
+                opacity: 0,
+                x: -100,
+                duration: 1.2
+            }, '-=1')
+            .from('.introduction .coins', {
+                opacity: 0,
+                scale: 0.8,
+                x: 100,
+                duration: 1.2
+            }, '-=1')
+            .from('.introduction .buttons a', {
+                opacity: 0,
+                y: 30,
+                stagger: 0.15,
+                duration: 0.8
+            }, '-=0.5')
+            .from('.introduction .scroll-down', {
+                opacity: 0,
+                y: 300,
+                duration: 1.8
+            }, '-=0.1');
+
+
+            // Add a subtle floating animation to the scroll down icon
+            gsap.to('.introduction .scroll-down rect:nth-child(3)', {
+                y: 4,
+                duration: 1.5,
+                ease: 'power1.inOut',
+                repeat: -1,
+                yoyo: true,
+                delay: 2
+            });
+        }, 50);
+    });
 </script>
 
 <template>
